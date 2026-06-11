@@ -1,0 +1,13 @@
+{
+  "name": "kararla",
+  "owner": { "name": "Kararla" },
+  "plugins": [
+    {
+      "name": "kararla",
+      "source": "./",
+      "description": "Türk hukuku asistanı + Kararla MCP connector (tek kurulum).",
+      "version": "1.0.0",
+      "author": { "name": "Kararla" }
+    }
+  ]
+}
