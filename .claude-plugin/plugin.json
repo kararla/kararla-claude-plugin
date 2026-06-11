@@ -5,5 +5,5 @@
   "description": "Türk hukuku asistanı: içtihat/mevzuat araştırması, yasal süre & faiz/TÜFE/döviz hesaplama ve UYAP .udf belgelerini HTML/Word'e dönüştürme. kararla skill'ini ve Kararla MCP connector'ını tek kurulumda getirir.",
   "author": { "name": "Kararla" },
   "homepage": "https://kararla.com",
-  "repository": "https://github.com/kalaomer/kararla-claude-plugin"
+  "repository": "https://github.com/kararla/kararla-claude-plugin"
 }

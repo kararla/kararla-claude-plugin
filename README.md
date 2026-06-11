@@ -12,7 +12,7 @@ Plugin'in amacı: kullanıcının connector URL'sini elle girip skill'i ayrıca 
 ## Kullanıcı için kurulum (claude.ai web · Claude Desktop · Cowork)
 
 1. **Customize** (sol menü) → **Plugins** sekmesi.
-2. Bu marketplace'i ekle (GitHub repo): `kalaomer/kararla-claude-plugin`.
+2. Bu marketplace'i ekle (GitHub repo): `kararla/kararla-claude-plugin`.
 3. **kararla** plugin'inde **Install**.
 4. Kararla connector'ını **bir kez yetkilendir** (OAuth login — kendi org'unla bağlanırsın).
 
@@ -40,7 +40,7 @@ kararla-claude-plugin/
 `.mcp.json` Kararla uzak MCP endpoint'ini işaret eder: `https://mcp.kararla.com/mcp` (streamable HTTP → `type: "http"`). Endpoint değişirse burada güncelle.
 
 ### 2. Yayınla
-Repo'yu GitHub'a push et. Kullanıcılar marketplace'i `kalaomer/kararla-claude-plugin` ile ekler. Güncelleme = repoya push; kullanıcı marketplace'i yeniler.
+Repo'yu GitHub'a push et. Kullanıcılar marketplace'i `kararla/kararla-claude-plugin` ile ekler. Güncelleme = repoya push; kullanıcı marketplace'i yeniler.
 
 - Team/Enterprise org sahibi plugin'i organizasyona dağıtabilir (hatta auto-install/required).
 
