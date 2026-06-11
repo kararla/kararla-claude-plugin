@@ -36,8 +36,8 @@ kararla-claude-plugin/
 
 ## Geliştirici / yayıncı için
 
-### 1. MCP URL'sini doldur (ZORUNLU)
-`.mcp.json` içindeki `REPLACE_WITH_KARARLA_MCP_URL`'i **claude.ai Connectors'a şu an girdiğin gerçek Kararla MCP URL'si** ile değiştir. Transport (`http` vs `sse`) çalışan connector ile aynı olmalı — emin değilsen mevcut connector ayarından kopyala.
+### 1. MCP connector
+`.mcp.json` Kararla uzak MCP endpoint'ini işaret eder: `https://mcp.kararla.com/mcp` (streamable HTTP → `type: "http"`). Endpoint değişirse burada güncelle.
 
 ### 2. Yayınla
 Repo'yu GitHub'a push et. Kullanıcılar marketplace'i `kalaomer/kararla-claude-plugin` ile ekler. Güncelleme = repoya push; kullanıcı marketplace'i yeniler.

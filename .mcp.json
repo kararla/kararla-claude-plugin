@@ -2,7 +2,7 @@
   "mcpServers": {
     "kararla": {
       "type": "http",
-      "url": "https://REPLACE_WITH_KARARLA_MCP_URL"
+      "url": "https://mcp.kararla.com/mcp"
     }
   }
 }
