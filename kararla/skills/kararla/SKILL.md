@@ -81,6 +81,7 @@ Yasal süre (mevzuattan teyit + tarih araçları), faiz, alacak güncelleme yön
 ### 3. Belge okuma & analiz
 `.udf` → HTML/DOCX dönüşüm akışı, token ve biçim sınırları → [references/belge-okuma.md](references/belge-okuma.md).
 Belge türlerini tanıma ve künye çıkarımı → [references/belge-turleri.md](references/belge-turleri.md).
+Yapılandırılmış inceleme (term-by-term + risk özeti, birebir alıntı) → [references/belge-inceleme.md](references/belge-inceleme.md).
 > **Hangi format?** Belgeyi **okuyup analiz** edecek / canvas'ta göstereceksen `udf-to-html`.
 > Kullanıcı **düzenlenebilir Word (.docx)** istiyorsa (`"word olarak ver"`, `"docx indir"`)
 > `udf-to-docx`. İkisi de gerekiyorsa iki ayrı çağrı (iki token, iki dönüşüm sayılır).
@@ -97,17 +98,20 @@ Belge türlerini tanıma ve künye çıkarımı → [references/belge-turleri.md
 **Bir hukuki soruyu yanıtlama**
 1. `mevzuat_semantik_arama` ile ilgili maddeleri, `ictihat_semantik_arama` ile emsalleri tara.
 2. Kilit madde/kararları `mevzuat_madde` / `ictihat_detay` ile tam metinden teyit et.
-3. Cevabı resmi numara ve birebir alıntılarla, mülga/değişiklik notlarıyla ver.
+3. Cevabı resmi numara ve birebir alıntılarla, mülga/değişiklik notlarıyla ver. Karmaşık/çok-dayanaklı
+   analizde [memo formatında](references/arastirma.md) ver (Olay→Sorun→Mevzuat/Emsal→Değerlendirme→Sonuç).
 
 **Yüklenen dava belgesini inceleme**
 1. `.udf` ise [references/belge-okuma.md](references/belge-okuma.md) akışıyla HTML'e çevir; dönüşmüş HTML'i dosyadan AYNEN canvas'a koy (yeniden yazma).
 2. Türünü ve künyesini çıkar ([references/belge-turleri.md](references/belge-turleri.md)).
-3. Belgedeki kanun/karar atıflarını araçlarla doğrula ([references/arastirma.md](references/arastirma.md)).
-4. İlgili süre/faiz hesaplarını yap ([references/hesaplama.md](references/hesaplama.md)).
+3. Yapılandırılmış incele (term-by-term + risk, birebir alıntı) → [references/belge-inceleme.md](references/belge-inceleme.md).
+4. Belgedeki kanun/karar atıflarını araçlarla doğrula ([references/arastirma.md](references/arastirma.md)).
+5. İlgili süre/faiz hesaplarını yap ([references/hesaplama.md](references/hesaplama.md)).
 
 **Süre/alacak hesabı**
 1. Belge/olaydan başlangıç tarihini (tebliğ/temerrüt) ve ilgili usul kanununu belirle.
 2. Süre maddesini `mevzuat_madde` ile teyit et; son günü tarih araçlarıyla hesapla.
+   Adli tatil ve çoklu-saat ayrımını gözet; hak düşürücü sürede kritik uyarı bas ([hesaplama.md](references/hesaplama.md)).
 3. Faiz/güncellemeyi `faiz_orani` / `tufe` / `doviz_kuru` ile hesapla, kaynak oran/tarihle sun.
 
 ---
@@ -116,6 +120,9 @@ Belge türlerini tanıma ve künye çıkarımı → [references/belge-turleri.md
 
 - **Atıf uydurma.** Her kanun maddesini ve emsal kararı, metne yazmadan önce ilgili araçla
   **doğrula** (mülga mı, güncel metni ne, karar gerçekten o yönde mi).
+- **Provenance etiketle.** Tool sonucundan geleni `[Kararla — doğrulandı]`, genel bilgiden geleni
+  `[model bilgisi — teyit edin]` ile işaretle; etiket kaynağı anlatır, doğruluğu değil
+  → [references/guardrails.md](references/guardrails.md) (provenance + injection + degradation).
 - **`mevzuat_no` ≠ `mevzuat_id`.** Resmi numara/ad (5237, TCK) kullanıcıya yazılır; `mevzuat_id`
   ve karar `uid` backend iç kimliğidir — **yalnız araç argümanı**, metne yazma.
 - **Hesabı elle yapma.** Süre, faiz, TÜFE/döviz güncellemesini zihinden değil ilgili araçla yap

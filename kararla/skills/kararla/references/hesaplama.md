@@ -30,6 +30,29 @@ Araçlar Türkiye resmi tatillerini (Ramazan/Kurban Bayramı dahil) ve hafta son
 
 > Bu satırlar hatırlatmadır; somut olayda süre, istisna ve başlangıç anı mutlaka maddeden doğrulanmalı.
 
+### Adli tatil (HMK m. 102-104 — araç BİLMEZ, sen uygula)
+`is_gunu_*` araçları resmi tatil + hafta sonunu hesaba katar ama **adli tatili (her yıl 20 Temmuz –
+31 Ağustos) BİLMEZ.** Adli tatilde işlemeyen süreler durur; tatilin bittiği günü izleyen tarihten
+itibaren **bir hafta uzamış** sayılır (HMK m. 104). Bu yüzden:
+- Süre adli tatile denk geliyorsa kuralı `mevzuat_madde` (HMK m. 102-104) ile teyit et.
+- Adli tatilde **duran** süre tipi mi (çoğu HMK süresi) yoksa **işleyen** mi (acele işler, m. 103) ayır.
+- Araç çıktısını adli tatil için elle düzelt; sonucu "adli tatil dikkate alındı" diye işaretle.
+
+### Çoklu-saat: aynı olayda farklı süreler
+Bir olay birden çok süreyi aynı anda başlatabilir; karıştırma:
+- **Taraf süresi** vs **mahkeme süresi** (farklı sahip).
+- **İstinaf** (BAM, HMK m. 345) ile **temyiz** (Yargıtay, HMK m. 361) **ayrı saatlerdir**.
+- Aynı kararda farklı taraflar için tebliğ tarihleri farklı olabilir → her taraf için ayrı say.
+Her süreyi **sahibi + dayanağı (madde) + başlangıç tarihiyle** ayrı listele.
+
+### Hak düşürücü / kesin süre uyarısı
+Hesaplanan süre hak düşürücü ya da kesin süre ise sonucun sonuna ekle:
+> ⚠️ Bu süre hak düşürücüdür; kaçırılması hakkın kaybına yol açar. Başlangıç gününü (tebliğ/tefhim)
+> ve süre hükmünü ilgili usul maddesinden teyit edin; otomatik hesaba körü körüne güvenmeyin.
+
+(Kullanıcı hukukçudur — "avukata danışın" değil, **kendi** doğrulamasını vurgula. Gate süreyi
+göstermeyi engellemez; sonra teyidi öne çıkarır.)
+
 ## Faiz hesabı
 Temerrüt/yasal faiz: **`faiz_orani`** (`rate_type` + tarih aralığı).
 - `rate_type`: `temerrut` (ticari temerrüt / yasal faiz), `reeskont` (reeskont/avans), `politika` (TCMB politika faizi).

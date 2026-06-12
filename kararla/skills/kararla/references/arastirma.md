@@ -48,3 +48,20 @@ Bir belgedeki ya da kullanıcının verdiği atıfları **olduğu gibi kabul etm
 - Maddeyi/kararı tırnaklarken **birebir alıntı** kullan, resmi numara/künye ile birlikte ver.
 - Mülga/değişmiş hükümleri açıkça işaretle.
 - Kararın yönünü (kabul/ret, onama/bozma) doğru aktar; özet ile hüküm fıkrasını karıştırma.
+
+## Hukuki mütalaa (memo) formatı
+Bir hukuki soruyu araştırıp yanıtlarken — özellikle karmaşık/çok-dayanaklı analizde — cevabı dağınık
+paragraf yerine yapılandır (kısa, kesin sorularda memo şart değildir):
+
+- **Olay** → kullanıcının anlattığı maddi vakıalar (kısa).
+- **Hukuki Sorun** → çözülecek hukuki soru(lar), net cümleyle.
+- **İlgili Mevzuat / Emsal Kararlar** → her dayanak künyesiyle ve `[Kararla — doğrulandı]` etiketiyle
+  (madde no / karar künyesi + birebir alıntı). Yalnız tool sonucundan geleni etiketle.
+- **Değerlendirme** → mevzuat/emsali olaya uygula; karşı argümanı da belirt.
+- **Sonuç** → soruya net cevap + (varsa) izlenecek yol/süre.
+
+Kurallar:
+- **No silent supplement:** arama boş dönerse künye/madde **UYDURMA** — "emsal/madde bulunamadı" de,
+  boşluğu doldurma. (`ictihat_*` boş sonuç sinyali: "Sonuç bulunamadı.")
+- Provenance ayrımı (`[Kararla — doğrulandı]` ↔ `[model bilgisi — teyit edin]`) ve yukarıdaki
+  "Atıf doğrulama" bu formatın çekirdeğidir (bkz. [guardrails.md](guardrails.md)).

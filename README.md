@@ -26,12 +26,14 @@ Bitti. İçtihat/mevzuat/hesaplama/belge araçları + skill aktif. `.udf` yükle
 
 ```
 kararla-claude-plugin/
-├── .claude-plugin/
-│   ├── plugin.json        # plugin manifest (ad, sürüm)
-│   └── marketplace.json   # bu repo'yu marketplace yapar (plugin source: "./")
-├── .mcp.json              # Kararla uzak connector beyanı
-└── skills/
-    └── kararla/           # skill (SKILL.md + references + scripts)
+├── .claude-plugin/marketplace.json   # bu repo'yu marketplace yapar (plugin source: "./kararla")
+└── kararla/                          # plugin (çok-domain'e hazır: ileride kararla-ceza/… eklenebilir)
+    ├── .claude-plugin/plugin.json    # plugin manifest (ad, sürüm)
+    ├── .mcp.json                     # Kararla uzak connector beyanı
+    ├── CLAUDE.md                     # ortak guardrail kuralları (provenance/injection/degradation)
+    └── skills/
+        ├── kararla/                  # geniş skill: araştırma + memo + hesap/süre + belge okuma/inceleme
+        └── dilekce/                  # dilekçe yazma & düzenleme (write + patch)
 ```
 
 ## Geliştirici / yayıncı için
