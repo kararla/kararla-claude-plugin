@@ -51,4 +51,4 @@ Yayın öncesi **kendi hesabınla** kur ve doğrula:
 - `.udf` → `udf-to-docx` uçtan uca (connector + skill) çalışıyor mu.
 
 ### Skill kaynak-tekliği
-Skill'in çalışılan kopyası ana repoda da var (`kararla/mcp/skill/kararla/`). Drift'i önlemek için **bu plugin repo'sunu kanonik** kabul edip ana repodaki kopyayı kaldırmak ya da bir senkron adımı eklemek gerekir — aksi halde iki kopya zamanla ayrışır.
+**Bu plugin repo'su skill'in tek kanonik kaynağıdır.** Ana repodaki eski kopya (`kararla/mcp/skill/`) kaldırıldı (drift riski kapandı). Skill değişiklikleri yalnız burada (`skills/kararla/`) yapılır.
