@@ -46,6 +46,18 @@ Repo'yu GitHub'a push et. Kullanıcılar marketplace'i `kararla/kararla-claude-p
 
 - Team/Enterprise org sahibi plugin'i organizasyona dağıtabilir (hatta auto-install/required).
 
+### Versiyonlama (otomatik)
+Claude güncellemeyi `version` alanından algılar (aynı versiyon → cache'i korur). Bu repo bir
+**pre-commit hook** ile her commit'te patch'i otomatik artırır (`plugin.json` + `marketplace.json`
+senkron) → elle bump derdi yok.
+
+**Yeni clone'da bir kez:** `git config core.hooksPath .githooks`
+
+- Otomatik: her commit `1.1.0 → 1.1.1 → 1.1.2…`
+- Manuel minor/major: `version`'ı elle düzenleyip commit et (örn. `1.2.0`); hook senin değerine
+  saygı gösterir, otomatik bump'ı atlar.
+- Atlamak için: `git commit --no-verify`.
+
 ### 3. Pilot doğrulaması (ŞART)
 Yayın öncesi **kendi hesabınla** kur ve doğrula:
 - claude.ai web (consumer) **özel/3. taraf GitHub marketplace** eklemeye izin veriyor mu (plan/yüzeye göre değişebilir).

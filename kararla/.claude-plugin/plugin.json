@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "kararla",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Türk hukuku asistanı: içtihat/mevzuat araştırması, yasal süre & faiz/TÜFE/döviz hesaplama ve UYAP .udf belgelerini HTML/Word'e dönüştürme. kararla skill'ini ve Kararla MCP connector'ını tek kurulumda getirir.",
   "author": { "name": "Kararla" },
   "homepage": "https://kararla.com",

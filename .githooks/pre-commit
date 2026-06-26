@@ -1,0 +1,51 @@
+#!/usr/bin/env python3
+"""pre-commit — kararla plugin patch versiyonunu OTOMATİK artır.
+
+- Her commit'te patch +1 (1.1.0 → 1.1.1); plugin.json + marketplace.json senkron.
+  Böylece her push'ta Claude güncellemeyi algılar (Claude version alanından update tespit eder).
+- Versiyonu bu commit'te ELLE değiştirdiysen (minor/major bump), otomatik artış ATLANIR —
+  senin değerin korunur. Örn. 1.1.5 → 1.2.0 yazıp commit'lersen hook dokunmaz.
+
+Kurulum (her clone'da BİR KEZ):  git config core.hooksPath .githooks
+Atlamak için (nadiren):          git commit --no-verify
+"""
+import re
+import subprocess
+import sys
+from pathlib import Path
+
+PLUGIN = Path("kararla/.claude-plugin/plugin.json")
+MARKET = Path(".claude-plugin/marketplace.json")
+# NOT: tek-plugin varsayımı — ilk "version" eşleşmesini (kararla entry'si) artırır.
+# Çok-plugin'e geçilince entry'yi ada göre hedefle.
+VER_RE = re.compile(r'("version":\s*")(\d+)\.(\d+)\.(\d+)(")')
+
+if not PLUGIN.exists():
+    sys.exit(0)  # repo kökünde değil / yapı farklı — sessiz geç
+
+# Versiyon bu commit'te elle değişmişse otomatik bump'ı atla (manuel minor/major'a saygı).
+staged = subprocess.run(
+    ["git", "diff", "--cached", "--", str(PLUGIN), str(MARKET)],
+    capture_output=True, text=True,
+).stdout
+if re.search(r'^\+.*"version":', staged, re.M):
+    print("[pre-commit] versiyon elle değişmiş — otomatik bump atlandı")
+    sys.exit(0)
+
+m = VER_RE.search(PLUGIN.read_text(encoding="utf-8"))
+if not m:
+    sys.exit(0)
+new = f"{int(m.group(2))}.{int(m.group(3))}.{int(m.group(4)) + 1}"
+
+
+def bump(path: Path) -> None:
+    t = path.read_text(encoding="utf-8")
+    t = VER_RE.sub(lambda x: f"{x.group(1)}{new}{x.group(5)}", t, count=1)
+    path.write_text(t, encoding="utf-8")
+
+
+bump(PLUGIN)
+if MARKET.exists():
+    bump(MARKET)
+subprocess.run(["git", "add", str(PLUGIN), str(MARKET)], check=True)
+print(f"[pre-commit] plugin version → {new}")

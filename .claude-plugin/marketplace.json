@@ -6,7 +6,7 @@
       "name": "kararla",
       "source": "./kararla",
       "description": "Türk hukuku asistanı + Kararla MCP connector (tek kurulum).",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "author": { "name": "Kararla" }
     }
   ]
